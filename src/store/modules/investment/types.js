@@ -1,0 +1,9 @@
+export const IS_LOADING = 'investment/isLoading';
+export const MUTUAL_FUNDS = 'investment/mutual_funds';
+export const BONDS = 'investment/bonds';
+export const FIXED_INCOME = 'investment/fixed_income';
+export const MONEY_MARKET = 'investment/money_market';
+export const EQUITIES = 'investment/equities';
+export const INVESTMENTS = 'investment/investments';
+export const INVEST = 'investment/invest';
+export const SELECTED_FUND = 'investment/selected_fund';
