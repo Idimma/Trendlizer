@@ -1,37 +1,46 @@
 import React from "react";
-import {Image} from "react-native";
+import {Image, TouchableOpacity, ScrollView, SafeAreaView} from "react-native";
 import {createBottomTabNavigator, createDrawerNavigator, createStackNavigator} from 'react-navigation';
 import Pager from './pagers';
+import Settings from './Settings';
+import Home from './Home';
 import {resizeFont, widthDIP} from "../utils/helper";
 import {Colors} from "../utils/Colors";
-import {CustomDrawerContentComponent} from "../partials/Common";
+import Analytics from "./Analytics";
 
 
 console.disableYellowBox
 
+
+
+
+export const CustomDrawerContentComponent = props => (
+    <SafeAreaView style={{marginTop: 35, paddingBottom: 40}}>
+
+        <ScrollView style={{}}>
+
+            {/*<TouchableOpacity*/}
+            {/*    onPress={() => props.navigation.navigate('AMC')}*/}
+            {/*    style={Styles.btnRow}>*/}
+            {/*    <Image source={USERS} resizeMode="contain" style={imgIcon}/>*/}
+            {/*    <Text allowFontScaling={false} style={{color: '#292874', fontWeight: 'bold',}}>*/}
+            {/*        AMC’s*/}
+            {/*    </Text>*/}
+            {/*</TouchableOpacity>*/}
+
+
+        </ScrollView>
+    </SafeAreaView>
+);
+
 const TabStack = createBottomTabNavigator({
-    AMC: {
-        screen: createStackNavigator({
-            AMC,
-            Form,
-            Single,
-            Individual,
-            Joint,
-            Child,
-            Corporate,
-            Choose,
-            Latest,
-        }, {
-            initialRouteName: 'Single', headerMode: 'none',
-            navigationOptions: {
-                gesturesEnabled: false,
-            },
-        }),
+    Home: {
+        screen: Home,
         navigationOptions: {
-            tabBarLabel: 'Funds',
+            tabBarLabel: 'Tweets',
             tabBarIcon: ({
                              tintColor
-                         }) => (<Image source={require('../../assets/images/settings.png')} style={{
+                         }) => (<Image source={require('../../assets/images/tweeter.png')} style={{
                 height: 20, width: 20,
                 tintColor: tintColor
             }}/>)
@@ -39,39 +48,26 @@ const TabStack = createBottomTabNavigator({
 
 
     },
-    Investment: {
-        screen: Choose,
+    Analytics: {
+        screen: Analytics,
         navigationOptions: {
-            tabBarLabel: 'My Investment',
+            tabBarLabel: 'Analysis',
             tabBarIcon: ({
                              tintColor
-                         }) => (<Image source={require('../../assets/images/bar.png')} style={{
+                         }) => (<Image source={require('../../assets/images/analytics-tab.png')} style={{
                     height: 20, width: 20,
                     tintColor: tintColor
                 }}/>
             )
         },
     },
-    Tools: {
-        screen: Latest,
+    Settings: {
+        screen: Settings,
         navigationOptions: {
-            tabBarLabel: 'Tools',
+            tabBarLabel: 'Settings',
             tabBarIcon: ({
                              tintColor
-                         }) => (<Image source={require('../../assets/images/settings-bars.png')} style={{
-                    height: 20, width: 20,
-                    tintColor: tintColor
-                }}/>
-            )
-        },
-    },
-    News: {
-        screen: News,
-        navigationOptions: {
-            tabBarLabel: 'News',
-            tabBarIcon: ({
-                             tintColor
-                         }) => (<Image source={require('../../assets/images/chat.png')} style={{
+                         }) => (<Image source={require('../../assets/images/settings.png')} style={{
                     height: 20, width: 20,
                     tintColor: tintColor
                 }}/>
@@ -122,6 +118,7 @@ const Dashboard = createDrawerNavigator(
 
 const AppNavigator = createStackNavigator({
     Pager,
+    Dashboard
 }, {
     headerMode: 'none',
     navigationOptions: {
